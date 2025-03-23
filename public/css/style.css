@@ -90,6 +90,10 @@ body {
     border-radius: 30px;
 }
 
+.text p {
+    text-align: left;
+}
+
 .text.company,
 .text.contact {
     margin: 2rem 0 4rem;
@@ -180,7 +184,7 @@ body {
     }
 
     .text {
-        padding: 1rem;
+        padding: 1.5rem;
         margin: 1rem auto 2rem;
         border-radius: 20px;
     }

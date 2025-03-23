@@ -26,7 +26,7 @@
             </div>
             <hr class="line">
             <div class="text about">
-                {!! nl2br($textAbout->content) !!}
+                <p>{!! nl2br($textAbout->content) !!}</p>
             </div>
         </div>
 
@@ -43,7 +43,7 @@
             </div>
             <hr class="line">
             <div class="text message">
-                {!! nl2br($textMessage->content) !!}
+                <p>{!! nl2br($textMessage->content) !!}</p>
             </div>
         </div>
 
@@ -66,7 +66,7 @@
                             <th>
                                 {{$company["view_name"]}}
                             </th>
-                            <td>
+                            <td style="color: #ac2737;">
                                 {!! nl2br($company["value"]) !!}
                             </td>
                         </tr>
@@ -88,7 +88,7 @@
             </div>
             <hr class="line">
             <div class="text philosophy">
-                {!! nl2br($textPhilosophy->content) !!}
+                <p>{!! nl2br($textPhilosophy->content) !!}</p>
             </div>
         </div>
 
@@ -112,7 +112,7 @@
                             <th>
                                 {{$contact["view_name"]}}
                             </th>
-                            <td>
+                            <td style="color: #ac2737;">
                                 {!! nl2br($contact["value"]) !!}
                             </td>
                         </tr>
