@@ -84,7 +84,7 @@
                                     </td>
                                     <td>{{ $def->t_id }}</td>
                                     <td>{{ $def->memo }}</td>
-                                    <td>{{ $def->content }}</td>
+                                    <td>{!! nl2br($def->content) !!}</td>
                                 </tr>
                             @endforeach
                         </tbody>
