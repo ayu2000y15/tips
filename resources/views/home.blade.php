@@ -67,7 +67,11 @@
                                 {{$company["view_name"]}}
                             </th>
                             <td style="color: #ac2737;">
-                                {!! nl2br($company["value"]) !!}
+                                @if ($company["type"] == "date")
+                                    {{ date('Y年n月j日', strtotime($company["value"])) }}
+                                @else
+                                    {!! nl2br($company["value"]) !!}
+                                @endif
                             </td>
                         </tr>
                     @endforeach
