@@ -72,7 +72,7 @@
                                         @elseif($company["type"] == "textarea")
                                             {!! nl2br($company["value"]) !!}
                                         @else
-                                            {{ $company["value"] }}
+                                            {!! nl2br($company["value"]) !!}
                                         @endif
                                     </td>
                         </div>
