@@ -12,7 +12,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    text-decoration: none;
 }
 
 body {
@@ -127,6 +126,14 @@ body {
     background-color: white;
     color: #ac2737;
     width: 70%;
+}
+
+.table td a {
+    color: #ac2737;
+}
+
+.table td a:hover {
+    color: #fa364d;
 }
 
 .table tr {

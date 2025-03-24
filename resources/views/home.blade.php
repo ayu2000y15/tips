@@ -71,6 +71,8 @@
                                             {{ date('Y年n月j日', strtotime($company["value"])) }}
                                         @elseif($company["type"] == "textarea")
                                             {!! nl2br($company["value"]) !!}
+                                        @elseif($company["type"] == "tel")
+                                            <a href="tel:{{$company["value"]}}">{!! nl2br($company["value"]) !!}</a>
                                         @else
                                             {!! nl2br($company["value"]) !!}
                                         @endif
@@ -120,7 +122,13 @@
                             {{$contact["view_name"]}}
                         </th>
                         <td style="color: #ac2737;">
-                            {!! nl2br($contact["value"]) !!}
+                            @if($contact["type"] == "email")
+                                <a href="mailto:{{$contact["value"]}}">{!! nl2br($contact["value"]) !!}</a>
+                            @elseif($contact["type"] == "tel")
+                                <a href="tel:{{$contact["value"]}}">{!! nl2br($contact["value"]) !!}</a>
+                            @else
+                                {!! nl2br($contact["value"]) !!}
+                            @endif
                         </td>
                     </tr>
                 @endforeach
