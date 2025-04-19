@@ -10,14 +10,12 @@
 </head>
 
 <body>
-    <main>
-        @yield('content')
-    </main>
+    @yield('content')
 
     <footer>
-        <div class="container">
+        {{-- <div class="container">
             <p>&copy; {{ date('Y') }} tips株式会社 All rights reserved.</p>
-        </div>
+        </div> --}}
     </footer>
 
 </body>
