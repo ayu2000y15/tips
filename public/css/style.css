@@ -17,7 +17,6 @@
 body {
     color: #ac2737;
     height: 100%;
-
     text-align: center;
     align-items: center;
 }
@@ -27,48 +26,265 @@ main {
     padding: 0;
 }
 
-.top {
-    background-color: white;
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
 }
 
-.top img {
-    width: 100%;
+.menu-list {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+.menu-tab {
+    margin-top: auto;
+    height: 30px;
+    margin-right: 1rem;
+}
+
+.menu:nth-child(1) {
+    margin-right: auto;
+}
+
+.logo-top {
+    margin-top: auto;
+    margin-left: 2rem;
+    height: 60px;
+    vertical-align: bottom;
+}
+
+.contact2 {
+    height: 70px;
+    vertical-align: bottom;
+}
+
+.menu:hover,
+.footer-menu:hover {
+    opacity: 0.6;
+}
+
+.content-img {
     object-fit: contain;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    vertical-align: bottom;
 }
 
 .btn:hover {
     opacity: 0.9;
 }
 
-.contact1 {
-    position: absolute;
-    object-fit: contain;
-    height: 13%;
-    top: 75%;
-    left: 16%;
+footer {
+    background-color: #f1ece7;
+    padding-bottom: 0.5rem;
 }
 
-.contact2 {
-    position: absolute;
+.footer {
+    display: flex;
+    justify-content: center;
+}
+
+.footer-logo {
+    height: 90px;
     object-fit: contain;
-    height: 19%;
+}
+
+.allright {
+    margin-top: 1rem;
+    height: 50px;
+    object-fit: contain;
+}
+
+.footer-left,
+.footer-menu-list,
+.footer-right {
+    display: flex;
+    flex-flow: column;
+}
+
+.footer-left {
+    margin-right: 8rem;
+}
+
+.footer-menu-list {
+    margin-right: 6rem;
+}
+
+.footer-img {
+    height: 50px;
+}
+
+.footer-menu-tab {
+    height: 30px;
+    margin-top: 0.3rem;
+}
+
+/* ハンバーガーメニュー */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    width: 30px;
+    height: 24px;
+    position: relative;
+    margin-right: 20px;
+    z-index: 1001;
+}
+
+.hamburger span {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: #ac2737;
+    border-radius: 3px;
+    transition: all 0.3s;
+}
+
+.hamburger span:nth-child(1) {
     top: 0;
+}
+
+.hamburger span:nth-child(2) {
+    top: 10px;
+}
+
+.hamburger span:nth-child(3) {
+    top: 20px;
+}
+
+/* ハンバーガーメニューがアクティブ時 */
+.hamburger.active span:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+/* モバイルメニュー */
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.95);
+    z-index: 1000;
+    padding-top: 100px;
+    transition: right 0.3s;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-menu.active {
     right: 0;
 }
 
-.mail {
-    position: absolute;
-    object-fit: contain;
-    height: 7%;
-    bottom: -535%;
-    right: 16.5%;
+.mobile-menu-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.tel {
-    position: absolute;
-    object-fit: contain;
-    height: 7%;
-    bottom: -543%;
-    right: 16.5%;
+.mobile-menu-item {
+    margin: 15px 0;
+}
+
+.mobile-menu-tab {
+    height: 30px;
+    display: block;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 1024px) {
+    .footer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-left,
+    .footer-menu-list {
+        margin-right: 0;
+        margin-bottom: 2rem;
+    }
+
+    .footer-right {
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-tab,
+    .contact2 {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .mobile-menu {
+        display: block;
+    }
+
+    .logo-top {
+        height: 50px;
+        margin-left: 1rem;
+    }
+
+    header {
+        border-radius: 0;
+    }
+
+    .footer-logo {
+        height: 70px;
+    }
+
+    .allright {
+        height: 40px;
+    }
+
+    .footer-img {
+        height: 40px;
+        margin: 5px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-top {
+        height: 40px;
+    }
+
+    .footer-logo {
+        height: 60px;
+    }
+
+    .allright {
+        height: 30px;
+    }
+
+    .footer-menu-tab {
+        height: 25px;
+    }
+
+    .mobile-menu-tab {
+        height: 25px;
+    }
 }

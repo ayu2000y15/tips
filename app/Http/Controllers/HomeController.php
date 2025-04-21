@@ -23,17 +23,45 @@ class HomeController extends Controller
     public function index()
     {
         $hp = Image::where('view_flg', 'HP_000')->first();
+
+        $menuAbout = Image::where('view_flg', 'HP_002')->first();
+        $menuMessage = Image::where('view_flg', 'HP_003')->first();
+        $menuPhilosophy = Image::where('view_flg', 'HP_004')->first();
+        $menuCompany = Image::where('view_flg', 'HP_005')->first();
+
+        $logo = Image::where('view_flg', 'HP_101')->first();
+        $allright = Image::where('view_flg', 'HP_102')->first();
+        $businessHour = Image::where('view_flg', 'HP_103')->first();
+
         $contactBtn1 = Image::where('view_flg', 'HP_201')->first();
         $contactBtn2 = Image::where('view_flg', 'HP_202')->first();
         $mailBtn = Image::where('view_flg', 'HP_203')->first();
         $telBtn = Image::where('view_flg', 'HP_204')->first();
 
+        $top = Image::where('view_flg', 'HP_301')->first();
+        $about = Image::where('view_flg', 'HP_302')->first();
+        $message = Image::where('view_flg', 'HP_303')->first();
+        $philosophy = Image::where('view_flg', 'HP_304')->first();
+        $company = Image::where('view_flg', 'HP_305')->first();
+
         return view('home', compact(
             'hp',
+            'menuAbout',
+            'menuMessage',
+            'menuPhilosophy',
+            'menuCompany',
+            'logo',
+            'allright',
+            'businessHour',
             'contactBtn1',
             'contactBtn2',
             'mailBtn',
-            'telBtn'
+            'telBtn',
+            'top',
+            'about',
+            'message',
+            'philosophy',
+            'company'
         ));
     }
     // public function index()
