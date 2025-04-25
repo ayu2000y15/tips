@@ -65,6 +65,19 @@ a {
     vertical-align: bottom;
 }
 
+.top-img {
+    position: relative;
+}
+
+.contact1 {
+    position: absolute;
+    object-fit: contain;
+    left: 12rem;
+    bottom: 6rem;
+    height: 10%;
+    vertical-align: bottom;
+}
+
 .contact2 {
     height: 70px;
     vertical-align: bottom;
@@ -219,6 +232,11 @@ footer {
         align-items: center;
     }
 
+    .contact1 {
+        left: 9rem;
+        bottom: 4rem;
+    }
+
     .footer-left,
     .footer-menu-list {
         margin-right: 0;
@@ -253,6 +271,10 @@ footer {
         border-radius: 0;
     }
 
+    .contact1 {
+        left: 8rem;
+    }
+
     .footer-logo {
         height: 70px;
     }
@@ -267,9 +289,20 @@ footer {
     }
 }
 
+@media (max-width: 600px) {
+    .contact1 {
+        bottom: 3rem;
+        left: 5rem;
+    }
+}
+
 @media (max-width: 480px) {
     .logo-top {
         height: 40px;
+    }
+
+    .contact1 {
+        left: 4rem;
     }
 
     .footer-logo {
@@ -286,5 +319,12 @@ footer {
 
     .mobile-menu-tab {
         height: 25px;
+    }
+}
+
+@media (max-width: 370px) {
+    .contact1 {
+        bottom: 2rem;
+        left: 4rem;
     }
 }

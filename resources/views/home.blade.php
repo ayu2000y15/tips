@@ -20,7 +20,7 @@
             <a class="menu" href="#company">
                 <img class="menu-tab" src="{{ asset($menuCompany->file_path . $menuCompany->file_name) }}" alt="menu">
             </a>
-            <a class="menu" href="mailto:info@tip-s.com">
+            <a class="menu" href="#contact-id">
                 <img class="contact2" src="{{ asset($contactBtn2->file_path . $contactBtn2->file_name) }}" alt="contact">
             </a>
 
@@ -55,7 +55,12 @@
         </div>
     </header>
 
-    <img id="top" class="content-img" src="{{ asset($top->file_path . $top->file_name) }}" alt="TOP画像">
+    <div class="top-img">
+        <img id="top" class="content-img" src="{{ asset($top->file_path . $top->file_name) }}" alt="TOP画像">
+        <a class="menu" href="#contact-id">
+            <img class="contact1" src="{{ asset($contactBtn1->file_path . $contactBtn1->file_name) }}" alt="contact">
+        </a>
+    </div>
     <img id="about" class="content-img" src="{{ asset($about->file_path . $about->file_name) }}" alt="About画像">
     <img id="message" class="content-img" src="{{ asset($message->file_path . $message->file_name) }}" alt="Message画像">
     <img id="philosophy" class="content-img" src="{{ asset($philosophy->file_path . $philosophy->file_name) }}"
@@ -90,7 +95,7 @@
                         alt="footer-menu">
                 </a>
             </div>
-            <div class="footer-right">
+            <div id="contact-id" class="footer-right">
                 <a class="btn" href="mailto:info@tip-s.com">
                     <img class="footer-img" src="{{ asset($mailBtn->file_path . $mailBtn->file_name) }}" alt="メール">
                 </a>
