@@ -16,8 +16,6 @@
             /* 中央に配置 */
             background-repeat: no-repeat;
             height: auto;
-            min-height: 100vh;
-            /* 最小高さを設定 */
         }
 
         .philosophy-area {

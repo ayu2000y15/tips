@@ -49,6 +49,7 @@ header {
 
 a {
     text-decoration: none;
+    color: #ac2737;
 }
 
 img {
@@ -680,6 +681,10 @@ footer {
         text-align: left;
         border: none;
         padding-left: 1.5rem;
+    }
+
+    .table tr:last-child {
+        border-bottom: none;
     }
 
     .menu-tab,
