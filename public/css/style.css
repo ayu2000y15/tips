@@ -133,7 +133,7 @@ img {
 }
 
 .about-content-area {
-    max-width: 800px;
+    max-width: 900px;
     margin: auto;
     border-radius: 30px 30px 0 0;
     color: white;
@@ -153,7 +153,7 @@ img {
 }
 
 .about-icon-area {
-    max-width: 800px;
+    max-width: 900px;
     margin: auto;
     color: rgb(0, 4, 43);
     display: flex;
@@ -167,6 +167,12 @@ img {
     background-color: white;
     box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, 0.47);
     border-radius: 20px;
+}
+
+.about-line {
+    margin: 1rem auto;
+    width: 80%;
+    border: 1px solid rgb(0, 4, 43);
 }
 
 .about-icon-content {
@@ -191,6 +197,15 @@ img {
     margin-bottom: 3.2rem;
     height: 200px;
     object-fit: contain;
+}
+
+.about-under-p {
+    position: absolute;
+    bottom: 0;
+    color: white;
+    transform: rotate(-4deg);
+    margin-bottom: 2rem;
+    margin-left: 12rem;
 }
 
 /* message-area */
@@ -569,6 +584,10 @@ footer {
         font-size: 0.95rem;
     }
 
+    .about-under-p {
+        margin-left: 5rem;
+    }
+
     .footer {
         flex-direction: column;
         align-items: center;
@@ -655,6 +674,23 @@ footer {
         width: 100%;
         margin-top: 0.5rem;
         text-align: left;
+    }
+
+    .about-icon:last-child {
+        margin-bottom: 5rem;
+    }
+
+    .about-house {
+        bottom: -25px;
+    }
+
+    .about-house img {
+        height: 150px;
+    }
+
+    .about-under-p {
+        font-size: 0.8rem;
+        margin-top: 5rem;
     }
 
     .philosophy-area {
@@ -748,6 +784,15 @@ footer {
     .contact1 {
         bottom: 3rem;
         left: 5rem;
+    }
+
+    .about-house img {
+        display: none;
+    }
+
+    .about-under-p {
+        font-size: 0.8rem;
+        margin: 1rem auto;
     }
 }
 

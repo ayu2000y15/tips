@@ -123,6 +123,7 @@
                     <div class="about-icon-title">
                         {!! nl2br($AboutTitle1->content) !!}
                     </div>
+                    <hr class="about-line">
                     <div class="about-icon-content">
                         {!! nl2br($AboutContent1->content) !!}
                     </div>
@@ -133,6 +134,7 @@
                     <div class="about-icon-title">
                         {!! nl2br($AboutTitle2->content) !!}
                     </div>
+                    <hr class="about-line">
                     <div class="about-icon-content">
                         {!! nl2br($AboutContent2->content) !!}
                     </div>
@@ -143,6 +145,7 @@
                     <div class="about-icon-title">
                         {!! nl2br($AboutTitle3->content) !!}
                     </div>
+                    <hr class="about-line">
                     <div class="about-icon-content">
                         {!! nl2br($AboutContent3->content) !!}
                     </div>
@@ -153,6 +156,7 @@
             <div class="about-house">
                 <img src="{{ asset($aboutHouse->file_path . $aboutHouse->file_name) }}" alt="house">
             </div>
+            <p class="about-under-p">{{$AboutUnder->content}}</p>
         </div>
     </div>
 
