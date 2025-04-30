@@ -3,6 +3,51 @@
 @section('title', 'HOME')
 
 @section('content')
+    @php
+        $topBackImg = asset($topBack->file_path . $topBack->file_name);
+        $philosophyBackImg = asset($philosophyBack->file_path . $philosophyBack->file_name);
+
+    @endphp
+    <style>
+        .top-area {
+            background-image: url({{$topBackImg}});
+            background-size: cover;
+            background-position: center;
+            /* 中央に配置 */
+            background-repeat: no-repeat;
+            height: auto;
+            min-height: 100vh;
+            /* 最小高さを設定 */
+        }
+
+        .philosophy-area {
+            background-image: url({{$philosophyBackImg}});
+            background-size: cover;
+            /* contain から cover に変更 */
+            background-position: center;
+            /* 中央に配置 */
+            background-repeat: no-repeat;
+            height: auto;
+            /* 自動高さに変更 */
+            min-height: 800px;
+            /* 最小高さを設定 */
+        }
+
+        /* 文字の読みやすさを向上させるためのスタイル */
+        @media (max-width: 768px) {
+            .philosophy-area {
+                background-size: cover;
+                background-position: center;
+            }
+
+            .philosophy-content {
+                background-color: rgba(125, 122, 137, 0.7);
+                /* 背景に半透明レイヤーを追加 */
+                padding: 2rem 1rem;
+                border-radius: 10px;
+            }
+        }
+    </style>
     <header>
         <div class="menu-list">
             <a class="menu" href="#top">
@@ -55,21 +100,143 @@
         </div>
     </header>
 
-    <div class="top-img">
-        <img id="top" class="content-img" src="{{ asset($top->file_path . $top->file_name) }}" alt="TOP画像">
-        <a class="menu" href="#contact-id">
+    <div id="top" class="top-area">
+        <div class="top-content">
+            {!! nl2br($TopText->content) !!}
+        </div>
+        <a href="#contact-id">
             <img class="contact1" src="{{ asset($contactBtn1->file_path . $contactBtn1->file_name) }}" alt="contact">
         </a>
     </div>
-    <img id="about" class="content-img" src="{{ asset($about->file_path . $about->file_name) }}" alt="About画像">
-    <img id="message" class="content-img" src="{{ asset($message->file_path . $message->file_name) }}" alt="Message画像">
-    <img id="philosophy" class="content-img" src="{{ asset($philosophy->file_path . $philosophy->file_name) }}"
-        alt="philosophy画像">
-    <img id="company" class="content-img" src="{{ asset($company->file_path . $company->file_name) }}" alt="company画像">
 
-    {{-- <a class="btn" href="mailto:info@tip-s.com">
-        <img class="btn contact1" src="{{ asset($contactBtn1->file_path . $contactBtn1->file_name) }}" alt="contact">
-    </a> --}}
+    <div id="about" class="about-area">
+        <img class="about-logo" src="{{ asset($aboutLogo->file_path . $aboutLogo->file_name) }}" alt="">
+        <div class="about-contents">
+            <div class="about-content-area">
+                <div class="about-title">
+                    {!! nl2br($AboutTITLE->content) !!}
+                </div>
+                <div class="about-content">
+                    {!! nl2br($AboutCONTENT->content) !!}
+                </div>
+            </div>
+            <div class="about-icon-area">
+                <div class="about-icon">
+                    <div class="about-icon-title">
+                        {!! nl2br($AboutTitle1->content) !!}
+                    </div>
+                    <div class="about-icon-content">
+                        {!! nl2br($AboutContent1->content) !!}
+                    </div>
+                    <img class="about-icon-img" src="{{ asset($aboutIcon1->file_path . $aboutIcon1->file_name) }}"
+                        alt="icon">
+                </div>
+                <div class="about-icon">
+                    <div class="about-icon-title">
+                        {!! nl2br($AboutTitle2->content) !!}
+                    </div>
+                    <div class="about-icon-content">
+                        {!! nl2br($AboutContent2->content) !!}
+                    </div>
+                    <img class="about-icon-img" src="{{ asset($aboutIcon2->file_path . $aboutIcon2->file_name) }}"
+                        alt="icon">
+                </div>
+                <div class="about-icon">
+                    <div class="about-icon-title">
+                        {!! nl2br($AboutTitle3->content) !!}
+                    </div>
+                    <div class="about-icon-content">
+                        {!! nl2br($AboutContent3->content) !!}
+                    </div>
+                    <img class="about-icon-img" src="{{ asset($aboutIcon3->file_path . $aboutIcon3->file_name) }}"
+                        alt="icon">
+                </div>
+            </div>
+            <div class="about-house">
+                <img src="{{ asset($aboutHouse->file_path . $aboutHouse->file_name) }}" alt="house">
+            </div>
+        </div>
+    </div>
+
+    <div id="message" class="message-area">
+        <div class="message-contents">
+            <div class="message-icon">
+                <img src="{{ asset($messageIcon->file_path . $messageIcon->file_name) }}" alt="house">
+            </div>
+            <div class="message-content">
+                <p>Message</p>
+                {!! nl2br($MessageText->content) !!}
+            </div>
+        </div>
+    </div>
+
+    <div id="philosophy" class="philosophy-area">
+        <div class="philosophy-contents">
+            <div class="philosophy-content">
+                <div class="philosophy-t">
+                    ・　Philosophy　・
+                </div>
+                <div class="philosophy-text">
+                    <div class="p-title">t</div>
+                    <div class="p-title2">・try</div>
+                    <div class="p-content">常識にとらわれず、住まい選びのその先を見据えた一歩を</div>
+                </div>
+                <hr class="line">
+                <div class="philosophy-text">
+                    <div class="p-title">i</div>
+                    <div class="p-title2">・idea</div>
+                    <div class="p-content">安定と感性を兼ね備えた、暮らしを彩る知恵を</div>
+                </div>
+                <hr class="line">
+                <div class="philosophy-text">
+                    <div class="p-title">p</div>
+                    <div class="p-title2">・planning</div>
+                    <div class="p-content">未来の安心と誇りを紡ぐ、資産形成の道筋を</div>
+                </div>
+                <hr class="line">
+                <div class="philosophy-text">
+                    <div class="p-title">s</div>
+                    <div class="p-title2">・strategy</div>
+                    <div class="p-content">資産価値とライフスタイル、両方を叶える不動産戦略を</div>
+                </div>
+                <hr class="line">
+            </div>
+        </div>
+    </div>
+
+    <div class="company-yane"></div>
+
+    <div id="company" class="company-area">
+        <img class="company-logo" src="{{ asset($companyLogo->file_path . $companyLogo->file_name) }}" alt="">
+        <div class="company-contents">
+            <p>会社情報 <span class="company-text">- Company -</span></p>
+            <table class="table company">
+                @foreach ($textCompany as $company)
+                            <tr>
+                                <th>
+                                    {{$company["view_name"]}}
+                                </th>
+                                <td>
+                                    @if ($company["type"] == "date")
+                                        {{ date('Y年n月j日', strtotime($company["value"])) }}
+                                    @elseif($company["type"] == "textarea")
+                                        {!! nl2br($company["value"]) !!}
+                                    @else
+                                        {!! nl2br($company["value"]) !!}
+                                    @endif
+                                </td>
+                    </div>
+                    </tr>
+                @endforeach
+        </table>
+    </div>
+    <div class="company-tree1">
+        <img src="{{ asset($companyTree1->file_path . $companyTree1->file_name) }}" alt="tree">
+    </div>
+    <div class="company-tree2">
+        <img src="{{ asset($companyTree2->file_path . $companyTree2->file_name) }}" alt="tree">
+    </div>
+    </div>
 
     <footer>
         <div class="footer">

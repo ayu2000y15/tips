@@ -34,7 +34,80 @@
 
                     <div class="mb-3">
                         <label for="content" class="form-label">内容<span class="text-danger ms-1">*</span></label>
-                        <textarea rows="5" type="text" id="content" name="content" class="form-control" required></textarea>
+
+                        <div class="rich-text-container">
+                            <div class="rich-text-toolbar">
+                                <div class="toolbar-left">
+                                    <select id="formatBlock" class="format-select">
+                                        <option value="">書式</option>
+                                        <option value="p">段落</option>
+                                        <option value="h1">見出し 1</option>
+                                        <option value="h2">見出し 2</option>
+                                        <option value="h3">見出し 3</option>
+                                        <option value="h4">見出し 4</option>
+                                    </select>
+
+                                    <button type="button" data-command="bold" class="toolbar-btn" title="太字">
+                                        <i class="fas fa-bold"></i>
+                                    </button>
+                                    <button type="button" data-command="italic" class="toolbar-btn" title="斜体">
+                                        <i class="fas fa-italic"></i>
+                                    </button>
+                                    <button type="button" data-command="underline" class="toolbar-btn" title="下線">
+                                        <i class="fas fa-underline"></i>
+                                    </button>
+                                    <span class="toolbar-divider"></span>
+
+                                    <button type="button" data-command="foreColor" data-value="#000000"
+                                        class="toolbar-btn color-btn" title="文字色">
+                                        <i class="fas fa-font"></i>
+                                    </button>
+                                    <button type="button" data-command="backColor" data-value="#ffffff"
+                                        class="toolbar-btn bg-color-btn" title="背景色">
+                                        <i class="fas fa-fill-drip"></i>
+                                    </button>
+                                    <span class="toolbar-divider"></span>
+
+                                    <button type="button" data-command="justifyLeft" class="toolbar-btn" title="左揃え">
+                                        <i class="fas fa-align-left"></i>
+                                    </button>
+                                    <button type="button" data-command="justifyCenter" class="toolbar-btn" title="中央揃え">
+                                        <i class="fas fa-align-center"></i>
+                                    </button>
+                                    <button type="button" data-command="justifyRight" class="toolbar-btn" title="右揃え">
+                                        <i class="fas fa-align-right"></i>
+                                    </button>
+                                    <span class="toolbar-divider"></span>
+
+                                    <button type="button" data-command="insertUnorderedList" class="toolbar-btn"
+                                        title="箇条書き">
+                                        <i class="fas fa-list-ul"></i>
+                                    </button>
+                                    <button type="button" data-command="insertOrderedList" class="toolbar-btn"
+                                        title="番号付きリスト">
+                                        <i class="fas fa-list-ol"></i>
+                                    </button>
+                                    <span class="toolbar-divider"></span>
+
+                                    <button type="button" data-command="createLink" class="toolbar-btn" title="リンク">
+                                        <i class="fas fa-link"></i>
+                                    </button>
+                                    <button type="button" data-command="insertImage" class="toolbar-btn" title="画像">
+                                        <i class="fas fa-image"></i>
+                                    </button>
+                                </div>
+                                <div class="toolbar-right">
+                                    <span>フォーマット：</span>
+                                    <select id="formatSelector" class="format-select">
+                                        <option value="richtext" selected>リッチテキスト</option>
+                                        <option value="plaintext">本文</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div id="editor" class="rich-text-editor" contenteditable="true"></div>
+                            <textarea id="content" name="content" style="display: none;" required></textarea>
+                        </div>
                     </div>
 
                     <div class="d-flex justify-content-end mt-4">
@@ -67,7 +140,8 @@
                                     <td>
                                         <div class="btn-group" role="group">
                                             <button class="btn btn-sm btn-warning edit-btn" data-id="{{ $def->t_id }}"
-                                                data-content="{{ $def->content }}" data-memo="{{ $def->memo }}">
+                                                data-content="{{ htmlspecialchars($def->content) }}"
+                                                data-memo="{{ $def->memo }}">
                                                 <i class="fas fa-edit"></i> 編集
                                             </button>
                                             <form action="{{ route('admin.hptext.delete') }}" method="POST"
@@ -102,6 +176,92 @@
             const newEntryBtn = document.getElementById('newEntryBtn');
             const submitBtn = document.getElementById('submitBtn');
             const cancelBtn = document.getElementById('cancelBtn');
+            const formatSelector = document.getElementById('formatSelector');
+            const editor = document.getElementById('editor');
+            const contentTextarea = document.getElementById('content');
+
+            // リッチテキストエディタの初期化
+            initRichTextEditor();
+
+            function initRichTextEditor() {
+                const toolbarButtons = document.querySelectorAll('.toolbar-btn');
+                const formatBlockSelect = document.getElementById('formatBlock');
+
+                // ツールバーボタンのイベントリスナー
+                toolbarButtons.forEach(button => {
+                    button.addEventListener('click', function () {
+                        const command = this.dataset.command;
+                        let value = this.dataset.value || '';
+
+                        if (command === 'createLink') {
+                            const url = prompt('リンクURLを入力してください:', 'https://');
+                            if (url) {
+                                document.execCommand(command, false, url);
+                            }
+                        } else if (command === 'insertImage') {
+                            const url = prompt('画像URLを入力してください:', 'https://');
+                            if (url) {
+                                document.execCommand(command, false, url);
+                            }
+                        } else if (command === 'foreColor' || command === 'backColor') {
+                            const color = prompt('カラーコードを入力してください (例: #ff0000):', value);
+                            if (color) {
+                                document.execCommand(command, false, color);
+                            }
+                        } else {
+                            document.execCommand(command, false, value);
+                        }
+
+                        // エディタの内容をテキストエリアに反映
+                        updateTextarea();
+                    });
+                });
+
+                // 書式選択のイベントリスナー
+                formatBlockSelect.addEventListener('change', function () {
+                    if (this.value) {
+                        document.execCommand('formatBlock', false, '<' + this.value + '>');
+                        this.selectedIndex = 0; // リセット
+                        updateTextarea();
+                    }
+                });
+
+                // エディタの内容変更イベント
+                editor.addEventListener('input', updateTextarea);
+                editor.addEventListener('blur', updateTextarea);
+
+                // フォーマット選択の変更イベント
+                formatSelector.addEventListener('change', function () {
+                    if (this.value === 'plaintext') {
+                        // プレーンテキストモード
+                        editor.style.fontFamily = 'monospace';
+                        document.querySelectorAll('.toolbar-btn, #formatBlock').forEach(el => {
+                            el.disabled = true;
+                        });
+                    } else {
+                        // リッチテキストモード
+                        editor.style.fontFamily = '';
+                        document.querySelectorAll('.toolbar-btn, #formatBlock').forEach(el => {
+                            el.disabled = false;
+                        });
+                    }
+                });
+            }
+
+            // エディタの内容をテキストエリアに反映する関数
+            function updateTextarea() {
+                contentTextarea.value = editor.innerHTML;
+            }
+
+            // テキストエリアの内容をエディタに反映する関数
+            function updateEditor() {
+                editor.innerHTML = contentTextarea.value;
+            }
+
+            // フォーム送信前にテキストエリアを更新
+            form.addEventListener('submit', function () {
+                updateTextarea();
+            });
 
             //キャンセルボタンのイベントリスナー
             cancelBtn.addEventListener('click', function () {
@@ -122,8 +282,11 @@
                     const memo = this.getAttribute('data-memo');
 
                     document.getElementById('text_id').value = textId;
-                    document.getElementById('content').value = content;
+                    contentTextarea.value = content;
                     document.getElementById('memo').value = memo;
+
+                    // エディタに内容を反映
+                    editor.innerHTML = content;
 
                     submitBtn.textContent = '更新';
                     form.action = "{{ route('admin.hptext.update') }}";
@@ -135,7 +298,8 @@
             function resetForm() {
                 form.reset();
                 document.getElementById('text_id').value = '';
-                document.getElementById('content').value = '';
+                contentTextarea.value = '';
+                editor.innerHTML = '';
                 document.getElementById('memo').value = '';
 
                 submitBtn.innerHTML = '<i class="fas fa-save me-1"></i> 登録';

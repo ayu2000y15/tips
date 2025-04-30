@@ -1,0 +1,113 @@
+/* リッチテキストエディタのスタイル */
+.rich-text-container {
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.rich-text-toolbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ced4da;
+    padding: 5px;
+}
+
+.toolbar-left {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2px;
+}
+
+.toolbar-right {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.toolbar-btn {
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toolbar-btn:hover {
+    background-color: #e9ecef;
+    border-color: #ced4da;
+}
+
+.toolbar-btn.active {
+    background-color: #e9ecef;
+    border-color: #ced4da;
+}
+
+.toolbar-divider {
+    width: 1px;
+    height: 20px;
+    background-color: #ced4da;
+    margin: 0 5px;
+}
+
+.format-select {
+    height: 30px;
+    border: 1px solid #ced4da;
+    border-radius: 3px;
+    padding: 0 5px;
+    background-color: white;
+}
+
+.rich-text-editor {
+    min-height: 200px;
+    padding: 10px;
+    background-color: white;
+    overflow-y: auto;
+    word-break: break-word;
+}
+
+.rich-text-editor:focus {
+    outline: none;
+}
+
+/* テーブル内のリッチテキスト表示 */
+.table td {
+    max-width: 400px;
+    overflow: auto;
+}
+
+/* カラーピッカーボタン */
+.color-btn {
+    position: relative;
+}
+
+.color-btn::after {
+    content: "";
+    position: absolute;
+    bottom: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 2px;
+    background-color: #000;
+}
+
+.bg-color-btn {
+    position: relative;
+}
+
+.bg-color-btn::after {
+    content: "";
+    position: absolute;
+    bottom: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 2px;
+    background-color: #000;
+}

@@ -38,11 +38,36 @@ class HomeController extends Controller
         $mailBtn = Image::where('view_flg', 'HP_203')->first();
         $telBtn = Image::where('view_flg', 'HP_204')->first();
 
-        $top = Image::where('view_flg', 'HP_301')->first();
-        $about = Image::where('view_flg', 'HP_302')->first();
-        $message = Image::where('view_flg', 'HP_303')->first();
-        $philosophy = Image::where('view_flg', 'HP_304')->first();
-        $company = Image::where('view_flg', 'HP_305')->first();
+        $topBack = Image::where('view_flg', 'HP_301')->first();
+        $philosophyBack = Image::where('view_flg', 'HP_302')->first();
+
+        $aboutLogo = Image::where('view_flg', 'HP_401')->first();
+        $aboutIcon1 = Image::where('view_flg', 'HP_402')->first();
+        $aboutIcon2 = Image::where('view_flg', 'HP_403')->first();
+        $aboutIcon3 = Image::where('view_flg', 'HP_404')->first();
+        $aboutHouse = Image::where('view_flg', 'HP_405')->first();
+        $messageIcon = Image::where('view_flg', 'HP_406')->first();
+        $companyLogo = Image::where('view_flg', 'HP_407')->first();
+        $companyTree1 = Image::where('view_flg', 'HP_408')->first();
+        $companyTree2 = Image::where('view_flg', 'HP_409')->first();
+
+        $TopText = HpText::where('hp_text_id', 'TOP')->first();
+        $AboutTITLE = HpText::where('hp_text_id', 'AboutTITLE')->first();
+        $AboutCONTENT = HpText::where('hp_text_id', 'AboutCONTENT')->first();
+        $AboutTitle1 = HpText::where('hp_text_id', 'AboutTitle1')->first();
+        $AboutTitle2 = HpText::where('hp_text_id', 'AboutTitle2')->first();
+        $AboutTitle3 = HpText::where('hp_text_id', 'AboutTitle3')->first();
+        $AboutContent1 = HpText::where('hp_text_id', 'AboutContent1')->first();
+        $AboutContent2 = HpText::where('hp_text_id', 'AboutContent2')->first();
+        $AboutContent3 = HpText::where('hp_text_id', 'AboutContent3')->first();
+        $AboutUnder = HpText::where('hp_text_id', 'AboutUnder')->first();
+        $MessageText = HpText::where('hp_text_id', 'Message')->first();
+
+        $options = [
+            ['priority', true],
+            ['id', true]
+        ];
+        $textCompany = $this->contentData->getContentWithSchema('T001');
 
         return view('home', compact(
             'hp',
@@ -57,11 +82,29 @@ class HomeController extends Controller
             'contactBtn2',
             'mailBtn',
             'telBtn',
-            'top',
-            'about',
-            'message',
-            'philosophy',
-            'company'
+            'topBack',
+            'philosophyBack',
+            'aboutLogo',
+            'aboutIcon1',
+            'aboutIcon2',
+            'aboutIcon3',
+            'aboutHouse',
+            'messageIcon',
+            'companyLogo',
+            'companyTree1',
+            'companyTree2',
+            'TopText',
+            'AboutTITLE',
+            'AboutCONTENT',
+            'AboutTitle1',
+            'AboutTitle2',
+            'AboutTitle3',
+            'AboutContent1',
+            'AboutContent2',
+            'AboutContent3',
+            'AboutUnder',
+            'MessageText',
+            'textCompany'
         ));
     }
     // public function index()
