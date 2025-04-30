@@ -162,7 +162,11 @@
                 <img src="{{ asset($messageIcon->file_path . $messageIcon->file_name) }}" alt="house">
             </div>
             <div class="message-content">
-                <p>Message</p>
+                <div class="message-header">
+                    <p>Message</p>
+                    <hr class="message-line">
+                </div>
+                <!-- #region -->
                 {!! nl2br($MessageText->content) !!}
             </div>
         </div>

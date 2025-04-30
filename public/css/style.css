@@ -212,16 +212,25 @@ img {
     object-fit: contain;
 }
 
-.message-content p {
+.message-content {
+    margin-top: 3rem;
+    font-size: 0.9rem;
+    line-height: 1.8;
+}
+
+.message-header p {
     font-size: 1.5rem;
     color: #ac2737;
     margin-bottom: 2rem;
     font-weight: bold;
 }
-.message-content {
-    margin-top: 3rem;
-    font-size: 0.9rem;
-    line-height: 1.8;
+
+.message-line {
+    margin: auto;
+    width: 40px;
+    margin-top: -2rem;
+    margin-bottom: 2rem;
+    border: 1px solid #ac2737;
 }
 
 /* philosophy-area */
