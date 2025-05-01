@@ -143,3 +143,120 @@
     height: 2px;
     background-color: #000;
 }
+
+/* プレビューモード */
+.preview-mode {
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #fff;
+}
+
+.preview-mode-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ced4da;
+}
+
+/* リアルタイムプレビュー用のスタイル */
+.realtime-preview-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+@media (min-width: 992px) {
+    .realtime-preview-container {
+        flex-direction: row;
+    }
+
+    .editor-container {
+        flex: 1;
+    }
+
+    .preview-container {
+        flex: 1;
+        position: sticky;
+        top: 20px;
+    }
+}
+
+.editor-container,
+.preview-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.preview-container {
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.preview-header {
+    background-color: #f8f9fa;
+    padding: 8px 10px;
+    border-bottom: 1px solid #ced4da;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.preview-toggle-btn {
+    background: none;
+    border: none;
+    color: #6c757d;
+    cursor: pointer;
+    padding: 0;
+    font-size: 0.875rem;
+}
+
+.preview-toggle-btn:hover {
+    color: #495057;
+}
+
+.preview-content {
+    padding: 10px;
+    overflow-y: auto;
+    min-height: 200px;
+    background-color: white;
+}
+
+/* プレビュー非表示時のスタイル */
+.preview-hidden .editor-container {
+    flex: 1;
+}
+
+.preview-hidden .preview-container {
+    display: none;
+}
+
+/* プレビュー表示時のスタイル */
+.preview-visible .editor-container,
+.preview-visible .preview-container {
+    flex: 1;
+}
+
+/* モバイル用のスタイル */
+@media (max-width: 991px) {
+    .preview-visible .editor-container {
+        display: none;
+    }
+
+    .preview-visible .preview-container {
+        display: block;
+    }
+
+    .preview-hidden .editor-container {
+        display: block;
+    }
+
+    .preview-hidden .preview-container {
+        display: none;
+    }
+}
