@@ -14,6 +14,14 @@ class ContentMasterService
             ->get();
     }
 
+    public function getMasterInId($masterIdList)
+    {
+        return ContentMaster::whereIn('master_id', $masterIdList)
+            ->where('delete_flg', '0')
+            ->orderBy('master_id')
+            ->get();
+    }
+
     public function getMasterById($masterId)
     {
         return ContentMaster::where('master_id', $masterId)

@@ -140,8 +140,7 @@
                                     <td>
                                         <div class="btn-group" role="group">
                                             <button class="btn btn-sm btn-warning edit-btn" data-id="{{ $def->t_id }}"
-                                                data-content="{{ htmlspecialchars($def->content) }}"
-                                                data-memo="{{ $def->memo }}">
+                                                data-raw-content="{{ $def->content }}" data-memo="{{ $def->memo }}">
                                                 <i class="fas fa-edit"></i> 編集
                                             </button>
                                             <form action="{{ route('admin.hptext.delete') }}" method="POST"
@@ -158,7 +157,11 @@
                                     </td>
                                     <td>{{ $def->t_id }}</td>
                                     <td>{{ $def->memo }}</td>
-                                    <td>{!! nl2br($def->content) !!}</td>
+                                    <td>
+                                        <div class="rich-text-content">
+                                            {!! $def->content !!}
+                                        </div>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -278,15 +281,20 @@
             editButtons.forEach(button => {
                 button.addEventListener('click', function () {
                     const textId = this.getAttribute('data-id');
-                    const content = this.getAttribute('data-content');
+                    const rawContent = this.getAttribute('data-raw-content');
                     const memo = this.getAttribute('data-memo');
 
-                    document.getElementById('text_id').value = textId;
-                    contentTextarea.value = content;
+                    const textIdField = document.getElementById('text_id');
+                    textIdField.value = textId;
+                    textIdField.readOnly = true;
+                    textIdField.classList.add('bg-light');
+
                     document.getElementById('memo').value = memo;
 
-                    // エディタに内容を反映
-                    editor.innerHTML = content;
+                    // エディタに内容を反映（生のHTMLを使用）
+                    editor.innerHTML = rawContent;
+                    // テキストエリアにも反映
+                    contentTextarea.value = rawContent;
 
                     submitBtn.textContent = '更新';
                     form.action = "{{ route('admin.hptext.update') }}";
@@ -297,7 +305,11 @@
 
             function resetForm() {
                 form.reset();
-                document.getElementById('text_id').value = '';
+                const textIdField = document.getElementById('text_id');
+                textIdField.value = '';
+                textIdField.readOnly = false;
+                textIdField.classList.remove('bg-light');
+
                 contentTextarea.value = '';
                 editor.innerHTML = '';
                 document.getElementById('memo').value = '';
