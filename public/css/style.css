@@ -584,6 +584,10 @@ footer {
         font-size: 0.95rem;
     }
 
+    .about-contents {
+        padding: 2rem;
+    }
+
     .about-under-p {
         margin-left: 5rem;
     }
@@ -618,10 +622,6 @@ footer {
         padding-left: 4rem;
         padding-right: 2rem;
         font-size: 1.5rem;
-    }
-
-    .about-contents {
-        padding: 2rem;
     }
 
     .about-icon-area {
