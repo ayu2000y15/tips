@@ -58,13 +58,15 @@
                                     </button>
                                     <span class="toolbar-divider"></span>
 
-                                    <button type="button" data-command="foreColor" data-value="#000000"
-                                        class="toolbar-btn color-btn" title="文字色">
+                                    <button type="button" data-command="foreColor" class="toolbar-btn color-btn"
+                                        title="文字色">
                                         <i class="fas fa-font"></i>
+                                        <input type="color" class="color-picker" id="foreColorPicker" value="#000000">
                                     </button>
-                                    <button type="button" data-command="backColor" data-value="#ffffff"
-                                        class="toolbar-btn bg-color-btn" title="背景色">
+                                    <button type="button" data-command="backColor" class="toolbar-btn bg-color-btn"
+                                        title="背景色">
                                         <i class="fas fa-fill-drip"></i>
+                                        <input type="color" class="color-picker" id="backColorPicker" value="#ffffff">
                                     </button>
                                     <span class="toolbar-divider"></span>
 
@@ -182,6 +184,8 @@
             const formatSelector = document.getElementById('formatSelector');
             const editor = document.getElementById('editor');
             const contentTextarea = document.getElementById('content');
+            const foreColorPicker = document.getElementById('foreColorPicker');
+            const backColorPicker = document.getElementById('backColorPicker');
 
             // リッチテキストエディタの初期化
             initRichTextEditor();
@@ -207,10 +211,8 @@
                                 document.execCommand(command, false, url);
                             }
                         } else if (command === 'foreColor' || command === 'backColor') {
-                            const color = prompt('カラーコードを入力してください (例: #ff0000):', value);
-                            if (color) {
-                                document.execCommand(command, false, color);
-                            }
+                            // カラーピッカーのクリックは処理しない（input[type=color]のchangeイベントで処理）
+                            return;
                         } else {
                             document.execCommand(command, false, value);
                         }
@@ -218,6 +220,17 @@
                         // エディタの内容をテキストエリアに反映
                         updateTextarea();
                     });
+                });
+
+                // カラーピッカーのイベントリスナー
+                foreColorPicker.addEventListener('input', function () {
+                    document.execCommand('foreColor', false, this.value);
+                    updateTextarea();
+                });
+
+                backColorPicker.addEventListener('input', function () {
+                    document.execCommand('backColor', false, this.value);
+                    updateTextarea();
                 });
 
                 // 書式選択のイベントリスナー

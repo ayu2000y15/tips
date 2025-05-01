@@ -144,6 +144,22 @@
     background-color: #000;
 }
 
+/* リッチテキストエディタのカラーピッカー用スタイル */
+.color-btn,
+.bg-color-btn {
+    position: relative;
+}
+
+.color-picker {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
 /* プレビューモード */
 .preview-mode {
     border: 1px solid #ced4da;
