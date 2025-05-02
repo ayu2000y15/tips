@@ -16,6 +16,8 @@
             /* 中央に配置 */
             background-repeat: no-repeat;
             height: auto;
+            width: 100%;
+            max-width: 100%;
         }
 
         .philosophy-area {
@@ -29,6 +31,8 @@
             /* 自動高さに変更 */
             min-height: 800px;
             /* 最小高さを設定 */
+            width: 100%;
+            max-width: 100%;
         }
 
         /* 文字の読みやすさを向上させるためのスタイル */
@@ -43,6 +47,24 @@
                 /* 背景に半透明レイヤーを追加 */
                 padding: 2rem 1rem;
                 border-radius: 10px;
+            }
+        }
+
+        /* 大画面デスクトップ用の追加スタイル */
+        @media (min-width: 1400px) {
+            .philosophy-content {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 3rem;
+            }
+
+            .philosophy-text {
+                margin: 3rem auto;
+            }
+
+            .line {
+                margin-top: -0.5rem;
+                margin-bottom: 1rem;
             }
         }
     </style>
@@ -107,7 +129,7 @@
         </a>
     </div>
 
-    <div id="about" class="about-area">
+    <div id="about" class="about-area" style="width: 100%; max-width: 100%;">
         <img class="about-logo" src="{{ asset($aboutLogo->file_path . $aboutLogo->file_name) }}" alt="">
         <div class="about-contents">
             <div class="about-content-area">
@@ -160,7 +182,7 @@
         </div>
     </div>
 
-    <div id="message" class="message-area">
+    <div id="message" class="message-area" style="width: 100%; max-width: 100%;">
         <div class="message-contents">
             <div class="message-icon">
                 <img src="{{ asset($messageIcon->file_path . $messageIcon->file_name) }}" alt="house">

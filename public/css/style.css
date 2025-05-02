@@ -21,6 +21,7 @@ body {
     align-items: center;
     background-color: #f1ece7;
     line-height: 1.6; /* 行間を広げて読みやすく */
+    overflow-x: hidden; /* 横スクロールを防止 */
 }
 
 main {
@@ -97,6 +98,8 @@ img {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    width: 100%;
+    max-width: 100%;
 }
 .top-content {
     padding-top: 10rem;
@@ -132,6 +135,8 @@ img {
     position: relative;
     padding-bottom: 10rem;
     border-radius: 30px 30px 0 0;
+    width: 100%;
+    max-width: 100%;
 }
 
 .about-content-area {
@@ -219,8 +224,10 @@ img {
 
 .message-contents {
     display: flex;
-    max-width: 1000px;
+    max-width: 1200px;
+    width: 100%;
     margin: auto;
+    padding: 0 2rem;
 }
 
 .message-icon img {
@@ -256,11 +263,16 @@ img {
     clip-path: polygon(0 0, 100% 10%, 100% 100%, 0 100%);
     background-position: center;
     background-size: cover;
+    width: 100%;
+    max-width: 100%;
 }
 
 .philosophy-contents {
     padding-top: 6rem;
     text-align: center;
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .philosophy-t {
@@ -328,6 +340,8 @@ img {
     position: relative;
     z-index: 2;
     padding-bottom: 2rem;
+    width: 100%;
+    max-width: 100%;
 }
 
 .company-logo {
@@ -363,6 +377,7 @@ img {
 
 .table {
     width: 60%;
+    max-width: 800px;
     margin: 0;
     border-collapse: collapse;
     position: relative;
@@ -563,6 +578,7 @@ footer {
 @media (max-width: 1024px) {
     .top-content {
         padding-left: 8rem;
+        padding-right: 2rem;
         font-size: 1.8rem;
     }
 
@@ -901,5 +917,125 @@ footer {
     .contact1 {
         bottom: 2rem;
         left: 4rem;
+    }
+}
+
+/* 大画面デスクトップ用の追加スタイル */
+@media (min-width: 1400px) {
+    .top-content {
+        padding-left: 15%;
+        font-size: 2.5rem;
+        line-height: 1.5;
+    }
+
+    .contact1 {
+        margin-left: 15%;
+        height: 100px;
+    }
+
+    .about-content-area,
+    .about-icon-area {
+        max-width: 1200px;
+    }
+
+    .about-title {
+        font-size: 2.4rem;
+        line-height: 1.4;
+    }
+
+    .about-content {
+        font-size: 1.2rem;
+        line-height: 1.9;
+    }
+
+    .about-icon {
+        padding: 25px;
+    }
+
+    .about-icon-title {
+        font-size: 1.3rem;
+    }
+
+    .about-icon-content {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    .about-icon-img {
+        height: 100px;
+    }
+
+    .message-contents {
+        max-width: 1400px;
+    }
+
+    .message-content {
+        font-size: 1.2rem;
+        line-height: 1.9;
+    }
+
+    .message-header p {
+        font-size: 2rem;
+    }
+
+    .philosophy-text {
+        max-width: 1000px;
+    }
+
+    .philosophy-t {
+        font-size: 2.5rem;
+        padding: 0.7rem 1.5rem;
+    }
+
+    .line {
+        width: 100%;
+    }
+
+    .p-title {
+        font-size: 4rem;
+    }
+
+    .p-title2 {
+        font-size: 2.5rem;
+    }
+
+    .p-content {
+        font-size: 1.3rem;
+        line-height: 1.8;
+    }
+
+    .company-contents p {
+        font-size: 2.2rem;
+    }
+
+    .company-text {
+        font-size: 1.5rem;
+    }
+
+    .table th {
+        font-size: 1.2rem;
+        padding: 15px 20px;
+    }
+
+    .table td {
+        font-size: 1.2rem;
+        padding: 15px 30px;
+        line-height: 1.8;
+    }
+
+    .footer-logo {
+        height: 110px;
+    }
+
+    .allright {
+        height: 60px;
+    }
+
+    .footer-menu-tab {
+        height: 40px;
+    }
+
+    .footer-img {
+        height: 60px;
     }
 }
