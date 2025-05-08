@@ -661,7 +661,8 @@ footer {
     .message-contents {
         flex-direction: column;
         align-items: center;
-        padding: 0 2rem;
+        max-width: 90%;
+        padding: 0 0.5rem;
     }
 
     .message-icon img {
@@ -675,6 +676,7 @@ footer {
     }
 
     .philosophy-text {
+        max-width: 100%;
         padding: 0 2rem;
     }
 
@@ -710,6 +712,11 @@ footer {
     .about-under-p {
         font-size: 0.8rem;
         margin-top: 5rem;
+    }
+
+    .about-content-area,
+    .about-icon-area {
+        max-width: 100%;
     }
 
     .philosophy-area {
