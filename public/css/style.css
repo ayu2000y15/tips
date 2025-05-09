@@ -1039,4 +1039,8 @@ footer {
     .footer-img {
         height: 60px;
     }
+
+    .philosophy-area {
+        padding-bottom: 5rem;
+    }
 }
