@@ -1,14 +1,6 @@
-@font-face {
-    font-family: "Koruri";
-    src: url("../font/Koruri-Bold.ttf") format("truetype");
-    src: url("../font/Koruri-Extrabold.ttf") format("truetype");
-    src: url("../font/Koruri-Light.ttf") format("truetype");
-    src: url("../font/Koruri-Regular.ttf") format("truetype");
-    src: url("../font/Koruri-Semibold.ttf") format("truetype");
-}
-
+@import url(http://fonts.googleapis.com/earlyaccess/notosansjp.css);
 * {
-    font-family: sans-serif;
+    font-family: "Noto Sans JP", sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
