@@ -6,9 +6,15 @@
     <div class="container-fluid">
         <div class="d-flex justify-content-between align-items-center page-title mb-4">
             <h2>HPテキスト管理</h2>
-            <button type="button" class="btn btn-primary" id="newEntryBtn">
-                <i class="fas fa-plus me-1"></i> 新規登録
-            </button>
+            @if (session('access_id') == '0')
+                <button type="button" class="btn btn-primary" id="newEntryBtn">
+                    <i class="fas fa-plus me-1"></i> 新規登録
+                </button>
+            @else
+                <button style="display: none;" type="button" class="btn btn-primary" id="newEntryBtn">
+                    <i class="fas fa-plus me-1"></i> 新規登録
+                </button>
+            @endif
         </div>
 
         <!-- 登録・更新フォーム -->
