@@ -9,9 +9,15 @@
             <a href="{{ route('admin.content-data') }}" class="btn btn-secondary me-2">
                 <i class="fas fa-arrow-left"></i> 戻る
             </a>
-            <a href="{{ route('admin.content-data.create', ['masterId' => $master->master_id]) }}" class="btn btn-primary">
-                <i class="fas fa-plus"></i> 新規登録
-            </a>
+            @if (session('access_id') == '0')
+                <a href="{{ route('admin.content-data.create', ['masterId' => $master->master_id]) }}" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> 新規登録
+                </a>
+            @else
+                <a style="display:none;" href="{{ route('admin.content-data.create', ['masterId' => $master->master_id]) }}" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> 新規登録
+                </a>
+            @endif
         </div>
     </div>
 
@@ -52,10 +58,17 @@
                                                 class="btn btn-sm btn-warning btn-action">
                                                 <i class="fas fa-edit"></i> 編集
                                             </a>
-                                            <button type="button" class="btn btn-sm btn-danger btn-action" data-bs-toggle="modal"
-                                                data-bs-target="#deleteModal{{ $item->data_id }}">
-                                                <i class="fas fa-trash"></i> 削除
-                                            </button>
+                                            @if (session('access_id') == '0')
+                                                <button type="button" class="btn btn-sm btn-danger btn-action" data-bs-toggle="modal"
+                                                    data-bs-target="#deleteModal{{ $item->data_id }}">
+                                                    <i class="fas fa-trash"></i> 削除
+                                                </button>
+                                            @else
+                                                <button style="display: none;" type="button" class="btn btn-sm btn-danger btn-action" data-bs-toggle="modal"
+                                                    data-bs-target="#deleteModal{{ $item->data_id }}">
+                                                    <i class="fas fa-trash"></i> 削除
+                                                </button>
+                                            @endif
                                         </div>
 
                                         <!-- 削除確認モーダル -->

@@ -38,6 +38,16 @@
                         <div class="rich-text-container">
                             <div class="rich-text-toolbar">
                                 <div class="toolbar-left">
+                                    <!-- フォントサイズ -->
+                                    <select id="fontSizeSelect" class="format-select">
+                                        <option value="1">10px</option>
+                                        <option value="2">13px</option>
+                                        <option value="3" selected>16px</option>
+                                        <option value="4">18px</option>
+                                        <option value="5">24px</option>
+                                        <option value="6">32px</option>
+                                        <option value="7">48px</option>
+                                    </select>
                                     <select id="formatBlock" class="format-select">
                                         <option value="">書式</option>
                                         <option value="p">段落</option>
@@ -150,10 +160,17 @@
                                                 @csrf
                                                 @method('DELETE')
                                                 <input type="hidden" name="hp_text_id" value="{{ $def->t_id }}">
-                                                <button type="submit" class="btn btn-sm btn-danger"
-                                                    onclick="return confirm('本当に削除しますか？');">
-                                                    <i class="fas fa-trash"></i> 削除
-                                                </button>
+                                                @if (session('access_id') == '0')
+                                                    <button type="submit" class="btn btn-sm btn-danger"
+                                                        onclick="return confirm('本当に削除しますか？');">
+                                                        <i class="fas fa-trash"></i> 削除
+                                                    </button>
+                                                @else
+                                                    <button style="display:none;" type="submit" class="btn btn-sm btn-danger"
+                                                        onclick="return confirm('本当に削除しますか？');">
+                                                        <i class="fas fa-trash"></i> 削除
+                                                    </button>
+                                                @endif
                                             </form>
                                         </div>
                                     </td>
@@ -340,5 +357,54 @@
                 dataFormContainer.style.display = 'none';
             }
         });
+
+        // フォントサイズ変更
+        document.getElementById('fontSizeSelect').addEventListener('change', function () {
+            document.execCommand('fontSize', false, this.value);
+        });
     </script>
+
+    <style>
+        .rich-text-editor font[size="1"] {
+            font-size: 10px;
+        }
+
+        .rich-text-editor font[size="2"] {
+            font-size: 13px;
+        }
+
+        .rich-text-editor font[size="3"] {
+            font-size: 16px;
+        }
+
+        .rich-text-editor font[size="4"] {
+            font-size: 18px;
+        }
+
+        .rich-text-editor font[size="5"] {
+            font-size: 24px;
+        }
+
+        .rich-text-editor font[size="6"] {
+            font-size: 32px;
+        }
+
+        .rich-text-editor font[size="7"] {
+            font-size: 48px;
+        }
+
+        .rich-text-editor img {
+            max-width: 80%;
+            height: auto;
+            display: block;
+            margin: 1em 0;
+        }
+
+        .rich-text-content img {
+            max-width: 80%;
+            height: auto;
+            display: block;
+            margin: 1em 0;
+        }
+    </style>
 @endsection

@@ -39,10 +39,18 @@
                             class="btn btn-outline-primary">
                             <i class="fas fa-list me-1"></i> データ一覧
                         </a>
-                        <a href="{{ route('admin.content-data.create', ['masterId' => $master->master_id]) }}"
-                            class="btn btn-primary">
-                            <i class="fas fa-plus me-1"></i> 新規登録
-                        </a>
+                        @if (session('access_id') == '0')
+                            <a href="{{ route('admin.content-data.create', ['masterId' => $master->master_id]) }}"
+                                class="btn btn-primary">
+                                <i class="fas fa-plus me-1"></i> 新規登録
+                            </a>
+                        @else
+                            <a style="display: none"
+                                href="{{ route('admin.content-data.create', ['masterId' => $master->master_id]) }}"
+                                class="btn btn-primary">
+                                <i class="fas fa-plus me-1"></i> 新規登録
+                            </a>
+                        @endif
                     </div>
                 </div>
             </div>
